@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b1530">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Toon Studio">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Toon Studio</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+
+  <!-- The app itself -->
+  <main id="app">
+    <header class="topbar">
+      <h1 id="page-title">Create</h1>
+    </header>
+
+    <!-- Create one video -->
+    <section id="page-create" class="page">
+      <label class="field">
+        <span>Cartoon style</span>
+        <select id="style-select"></select>
+      </label>
+
+      <label class="field">
+        <span>What happens in your video?</span>
+        <textarea id="idea" rows="4" placeholder="Example: Two raccoons try to sneak a whole pizza out of a fancy restaurant"></textarea>
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>Length</span>
+          <select id="length">
+            <option value="8">8 seconds</option>
+            <option value="15" selected>15 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">60 seconds</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>AI to use</span>
+          <select id="engine">
+            <option value="gemini">Gemini</option>
+            <option value="grok">Grok</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="hint">Videos come out tall (9:16), the shape TikTok, Instagram Reels, YouTube Shorts, Snapchat and Facebook Reels all use.</p>
+
+      <button class="btn primary big" id="create-btn" disabled>Create video</button>
+      <p class="soon">Video making gets switched on in Step 2.</p>
+    </section>
+
+    <!-- Series -->
+    <section id="page-series" class="page" hidden>
+      <div class="card">
+        <h2>Series mode</h2>
+        <p>Coming in Step 3. You'll set up characters once, then make episode after episode. Pick <b>I steer</b> to say what happens next, or <b>Auto</b> to let the AI decide. Every episode ends on a cliffhanger.</p>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="page-settings" class="page" hidden>
+      <div class="card">
+        <h2>AI keys</h2>
+        <p class="hint">Your keys are saved only on this device. They are sent straight to Google or xAI when the app makes something, and nowhere else.</p>
+
+        <label class="field">
+          <span>Gemini API key</span>
+          <div class="key-row">
+            <input id="key-gemini" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your Gemini key">
+            <button class="btn" data-show="key-gemini">Show</button>
+          </div>
+        </label>
+        <div class="key-actions">
+          <button class="btn" id="test-gemini">Test key</button>
+          <span id="status-gemini" class="status"></span>
+        </div>
+
+        <label class="field">
+          <span>Grok (xAI) API key</span>
+          <div class="key-row">
+            <input id="key-grok" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your Grok key">
+            <button class="btn" data-show="key-grok">Show</button>
+          </div>
+        </label>
+        <div class="key-actions">
+          <button class="btn" id="test-grok">Test key</button>
+          <span id="status-grok" class="status"></span>
+        </div>
+
+        <button class="btn primary" id="save-keys">Save keys</button>
+        <span id="save-msg" class="status"></span>
+      </div>
+
+
+      <div class="card">
+        <h2>Put it on your home screen</h2>
+        <p><b>iPhone:</b> open this page in Safari, tap the Share button (square with an arrow), then <b>Add to Home Screen</b>.</p>
+        <p><b>Android:</b> open it in Chrome, tap the ⋮ menu, then <b>Add to Home screen</b> or <b>Install app</b>.</p>
+        <p><b>Laptop:</b> in Chrome or Edge, click the install icon at the right end of the address bar.</p>
+      </div>
+    </section>
+
+    <nav class="tabs">
+      <button data-page="create" class="active"><span>🎬</span>Create</button>
+      <button data-page="series"><span>📺</span>Series</button>
+      <button data-page="settings"><span>⚙️</span>Settings</button>
+    </nav>
+  </main>
+
+  <script src="styles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
